@@ -2,7 +2,8 @@ import org.example.Bank;
 import org.example.Money;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class MoneyTest {
 
@@ -33,20 +34,22 @@ public class MoneyTest {
     }
 
     @Test
-    public void testSimpleSum(){
+    public void testSimpleSum() {
         assertEquals(Money.dollar(10), Money.dollar(5).plus(Money.dollar(5)));
         assertEquals(Money.franc(10), Money.franc(5).plus(Money.franc(5)));
     }
 
-  /*  @Test
+   @Test
     public void testComplexSum(){
-        assertEquals(Money.dollar(15), Money.dollar(5).plus(Money.franc(5)));
-    }*/
+        assertEquals(Money.dollar(7.5), Money.dollar(5).plus(Money.franc(5)));
+    }
 
     @Test
-    public void testBankExchangeRate(){
+    public void testBankExchangeRate() {
         Bank bank = new Bank();
-        assertEquals(bank.exchange(Money.dollar(10), "CHF"),Money.franc(20));
+        assertEquals(bank.exchange(Money.dollar(5), "CHF"), Money.franc(10));
+        assertEquals(bank.exchange(Money.franc(5), "USD"), Money.dollar(2.5));
+        assertEquals(bank.exchange(Money.dollar(10), "USD"), Money.dollar(10));
     }
 
 }

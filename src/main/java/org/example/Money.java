@@ -1,19 +1,19 @@
 package org.example;
 
 public class Money {
-    protected final int amount;
+    protected final double amount;
     protected final String currency;
 
-    public Money(int amount, String currency) {
+    public Money(double amount, String currency) {
         this.amount = amount;
         this.currency = currency;
     }
 
-    public static Money dollar(int amount) {
+    public static Money dollar(double amount) {
         return new Money(amount, "USD");
     }
 
-    public static Money franc(int amount) {
+    public static Money franc(double amount) {
         return new Money(amount, "CHF");
     }
 
