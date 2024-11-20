@@ -1,6 +1,6 @@
 package org.example;
 
-public class Money implements Expression{
+public class Money implements Expression {
     protected final int amount;
     protected final String currency;
 
@@ -38,5 +38,10 @@ public class Money implements Expression{
 
     public Expression plus(Money addend) {
         return new Money(amount + addend.amount, currency);
+    }
+
+    @Override
+    public Money reduce(String to) {
+        return this;
     }
 }
