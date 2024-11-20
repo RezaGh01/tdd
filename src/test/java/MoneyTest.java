@@ -1,3 +1,4 @@
+import org.example.Bank;
 import org.example.Money;
 import org.junit.jupiter.api.Test;
 
@@ -32,7 +33,20 @@ public class MoneyTest {
     }
 
     @Test
-    public void testDifferentClassEquality() {
-//        assertEquals(new Money(10, "CHF"), new Franc(10, "CHF"));
+    public void testSimpleSum(){
+        assertEquals(Money.dollar(10), Money.dollar(5).plus(Money.dollar(5)));
+        assertEquals(Money.franc(10), Money.franc(5).plus(Money.franc(5)));
     }
+
+  /*  @Test
+    public void testComplexSum(){
+        assertEquals(Money.dollar(15), Money.dollar(5).plus(Money.franc(5)));
+    }*/
+
+    @Test
+    public void testBankExchangeRate(){
+        Bank bank = new Bank();
+        assertEquals(bank.exchange(Money.dollar(10), "CHF"),Money.franc(20));
+    }
+
 }
